@@ -18,8 +18,13 @@ namespace SignalRDemo.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddTransient<ISalesOrderRepository, SalesOrderRepository>();
+
+            #region SignalR
+
+            services.AddSignalRCore();
+
+            #endregion
 
             services.AddMvc();
         }
@@ -31,6 +36,12 @@ namespace SignalRDemo.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            #region SignalR
+
+            app.UseSignalR(config => config.MapHub<NotificationHub>("notifications"));
+
+            #endregion
 
             app.UseMvc();
         }

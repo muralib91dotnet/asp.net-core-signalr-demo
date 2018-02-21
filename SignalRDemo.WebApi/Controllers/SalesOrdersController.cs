@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using SignalRDemo.Entities;
 using SignalRDemo.Repositories;
 using System.Threading;
@@ -10,13 +11,15 @@ namespace SignalRDemo.WebApi.Controllers
     public class SalesOrdersController : Controller
     {
         private readonly ISalesOrderRepository _repository;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
         #region ctor
 
-        public SalesOrdersController(ISalesOrderRepository repository)
+        public SalesOrdersController(ISalesOrderRepository repository, IHubContext<NotificationHub> hubContext)
             : base()
         {
             _repository = repository;
+            _hubContext = hubContext;
         }
 
         #endregion
@@ -40,6 +43,7 @@ namespace SignalRDemo.WebApi.Controllers
         public async Task<IActionResult> CreateSalesOrder([FromBody] SalesOrder salesOrder, CancellationToken cancellationToken)
         {
             var result = await _repository.CreateSalesOrderAsync(salesOrder, cancellationToken);
+            await _hubContext.Clients.All.InvokeAsync(SalesOrderEvents.Created, result);
             return this.CreatedAtAction("GetSalesOrder", new { id = result.Id }, result);
         }
 
