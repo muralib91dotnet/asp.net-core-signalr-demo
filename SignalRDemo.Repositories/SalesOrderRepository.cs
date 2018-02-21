@@ -1,5 +1,6 @@
 ﻿using SignalRDemo.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace SignalRDemo.Repositories
     public interface ISalesOrderRepository
     {
         Task<SalesOrder> CreateSalesOrderAsync(SalesOrder salesOrder, CancellationToken token);
+
+        Task<SalesOrder> GetSalesOrderAsync(int id, CancellationToken cancellationToken);
     }
 
     public class SalesOrderRepository : ISalesOrderRepository
@@ -30,6 +33,12 @@ namespace SignalRDemo.Repositories
             salesOrder.Id = _salesOrders.Count + 1;
             _salesOrders.Add(salesOrder);
             return await Task.FromResult(salesOrder);
+        }
+
+        public async Task<SalesOrder> GetSalesOrderAsync(int id, CancellationToken cancellationToken)
+        {
+            var result = _salesOrders.FirstOrDefault(x => x.Id == id);
+            return await Task.FromResult(result);
         }
 
         #endregion
