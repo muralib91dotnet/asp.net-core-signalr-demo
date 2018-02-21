@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRDemo.ConsoleClient",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRDemo.Entities", "SignalRDemo.Entities\SignalRDemo.Entities.csproj", "{39AFBCB9-FBB2-4D98-A78E-D74E94DB4FA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRDemo.Notifications", "SignalRDemo.Notifications\SignalRDemo.Notifications.csproj", "{0348723A-D3C1-4468-AEE7-09DFE3524BA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{39AFBCB9-FBB2-4D98-A78E-D74E94DB4FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39AFBCB9-FBB2-4D98-A78E-D74E94DB4FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39AFBCB9-FBB2-4D98-A78E-D74E94DB4FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0348723A-D3C1-4468-AEE7-09DFE3524BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0348723A-D3C1-4468-AEE7-09DFE3524BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0348723A-D3C1-4468-AEE7-09DFE3524BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0348723A-D3C1-4468-AEE7-09DFE3524BA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
