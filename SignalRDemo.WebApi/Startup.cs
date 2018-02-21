@@ -22,7 +22,7 @@ namespace SignalRDemo.WebApi
 
             #region SignalR
 
-            services.AddSignalRCore();
+            services.AddSignalR();
 
             #endregion
 
