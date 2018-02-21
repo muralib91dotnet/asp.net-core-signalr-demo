@@ -31,6 +31,7 @@ namespace SignalRDemo.Repositories
         public async Task<SalesOrder> CreateSalesOrderAsync(SalesOrder salesOrder, CancellationToken token)
         {
             salesOrder.Id = _salesOrders.Count + 1;
+            salesOrder.States = SalesOrderState.Created;
             _salesOrders.Add(salesOrder);
             return await Task.FromResult(salesOrder);
         }
